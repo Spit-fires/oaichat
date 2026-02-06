@@ -1,7 +1,7 @@
 """Tests for core models."""
 
 import pytest
-from chatcli.core.models import Profile, Message, Conversation
+from oaichat.core.models import Profile, Message, Conversation
 
 
 def test_profile_creation():

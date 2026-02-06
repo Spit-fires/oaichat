@@ -1,14 +1,14 @@
 """Tests for configuration management."""
 
 import pytest
-from chatcli.core.models import Profile
-from chatcli.config import add_profile, get_profile, list_profiles
+from oaichat.core.models import Profile
+from oaichat.config import add_profile, get_profile, list_profiles
 
 
 def test_add_and_get_profile(temp_app_dir, monkeypatch):
     """Test adding and retrieving a profile."""
     # Mock get_app_dir to use temp directory
-    from chatcli import config
+    from oaichat import config
     monkeypatch.setattr(config, "get_app_dir", lambda: temp_app_dir)
     
     profile = Profile(
@@ -29,7 +29,7 @@ def test_add_and_get_profile(temp_app_dir, monkeypatch):
 
 def test_list_profiles(temp_app_dir, monkeypatch):
     """Test listing profiles."""
-    from chatcli import config
+    from oaichat import config
     monkeypatch.setattr(config, "get_app_dir", lambda: temp_app_dir)
     
     # Add multiple profiles
@@ -48,7 +48,7 @@ def test_list_profiles(temp_app_dir, monkeypatch):
 
 def test_profile_name_validation():
     """Test profile name validation."""
-    from chatcli.commands.profile import add_profile_cmd
+    from oaichat.commands.profile import add_profile_cmd
     import typer
     
     # This would need to be tested with proper CLI testing tools

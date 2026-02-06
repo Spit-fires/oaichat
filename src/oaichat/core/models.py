@@ -1,4 +1,4 @@
-"""Pydantic models for chatcli data structures."""
+"""Pydantic models for oaichat data structures."""
 
 from datetime import datetime
 from typing import Optional

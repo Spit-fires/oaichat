@@ -4,14 +4,14 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/chatcli.git
-cd chatcli
+git clone https://github.com/yourusername/oaichat.git
+cd oaichat
 
 # Install in editable mode
 pip install -e .
 
 # Or install from PyPI (once published)
-pip install chatcli
+pip install oaichat
 ```
 
 ## First Time Setup
@@ -20,7 +20,7 @@ pip install chatcli
 
 For **OpenAI**:
 ```bash
-chatcli profile add openai \
+oaichat profile add openai \
   --base-url https://api.openai.com/v1 \
   --api-key sk-your-key-here \
   --model gpt-4o
@@ -28,7 +28,7 @@ chatcli profile add openai \
 
 For **Ollama** (local):
 ```bash
-chatcli profile add ollama \
+oaichat profile add ollama \
   --base-url http://localhost:11434/v1 \
   --api-key ollama \
   --model llama3
@@ -36,7 +36,7 @@ chatcli profile add ollama \
 
 For **Groq**:
 ```bash
-chatcli profile add groq \
+oaichat profile add groq \
   --base-url https://api.groq.com/openai/v1 \
   --api-key gsk-your-key-here \
   --model llama-3.1-70b-versatile
@@ -45,13 +45,13 @@ chatcli profile add groq \
 ### 2. List available models
 
 ```bash
-chatcli model list
+oaichat model list
 ```
 
 ### 3. Start chatting!
 
 ```bash
-chatcli chat
+oaichat chat
 ```
 
 ## Common Commands
@@ -59,22 +59,22 @@ chatcli chat
 ### Interactive Chat
 ```bash
 # Start a chat with default profile
-chatcli chat
+oaichat chat
 
 # Use a specific profile
-chatcli chat --profile ollama
+oaichat chat --profile ollama
 
 # Use a specific model
-chatcli chat --model gpt-4o
+oaichat chat --model gpt-4o
 
 # Set a custom system prompt
-chatcli chat --system "You are a helpful coding assistant"
+oaichat chat --system "You are a helpful coding assistant"
 
 # Disable streaming
-chatcli chat --no-stream
+oaichat chat --no-stream
 
 # Resume a previous conversation
-chatcli chat --resume <conversation-id>
+oaichat chat --resume <conversation-id>
 ```
 
 ### In-Chat Commands
@@ -91,61 +91,61 @@ While in an interactive chat:
 ### One-Shot Messages
 ```bash
 # Send a single message
-chatcli send "What is the capital of France?"
+oaichat send "What is the capital of France?"
 
 # Save the conversation
-chatcli send "Explain quantum computing" --save
+oaichat send "Explain quantum computing" --save
 
 # Use no-stream mode
-chatcli send "Count to 10" --no-stream
+oaichat send "Count to 10" --no-stream
 ```
 
 ### Manage Conversations
 ```bash
 # List all conversations
-chatcli convo list
+oaichat convo list
 
 # Show a specific conversation
-chatcli convo show <id>
+oaichat convo show <id>
 
 # Resume a conversation
-chatcli convo resume <id>
+oaichat convo resume <id>
 
 # Delete a conversation
-chatcli convo delete <id>
+oaichat convo delete <id>
 
 # Export to Markdown
-chatcli convo export <id> --format md
+oaichat convo export <id> --format md
 
 # Export to JSON
-chatcli convo export <id> --format json
+oaichat convo export <id> --format json
 ```
 
 ### Manage Profiles
 ```bash
 # List all profiles
-chatcli profile list
+oaichat profile list
 
 # Show profile details
-chatcli profile show <name>
+oaichat profile show <name>
 
 # Set default profile
-chatcli profile set-default <name>
+oaichat profile set-default <name>
 
 # Remove a profile
-chatcli profile remove <name>
+oaichat profile remove <name>
 ```
 
 ### Manage Models
 ```bash
 # List models from current profile
-chatcli model list
+oaichat model list
 
 # List models from specific profile
-chatcli model list --profile ollama
+oaichat model list --profile ollama
 
 # Set default model for current profile
-chatcli model set llama3
+oaichat model set llama3
 ```
 
 ## Tips & Tricks
@@ -154,44 +154,44 @@ chatcli model set llama3
 
 Override profile settings with environment variables:
 ```bash
-export CHATCLI_API_KEY=sk-...
-export CHATCLI_BASE_URL=https://api.openai.com/v1
-export CHATCLI_MODEL=gpt-4o
+export CLICHAT_API_KEY=sk-...
+export CLICHAT_BASE_URL=https://api.openai.com/v1
+export CLICHAT_MODEL=gpt-4o
 
-chatcli chat  # Will use environment variables
+oaichat chat  # Will use environment variables
 ```
 
 ### Configuration Location
 
 Your config and data are stored in:
-- **Linux**: `~/.config/chatcli/`
-- **macOS**: `~/Library/Application Support/chatcli/`
-- **Windows**: `%APPDATA%\chatcli\`
+- **Linux**: `~/.config/oaichat/`
+- **macOS**: `~/Library/Application Support/oaichat/`
+- **Windows**: `%APPDATA%\oaichat\`
 
 Files:
 - `config.toml` - Profile configurations
-- `chatcli.db` - SQLite database with conversations
+- `oaichat.db` - SQLite database with conversations
 
 ### Multiple Profiles
 
 Switch between different API providers easily:
 ```bash
 # Set up multiple profiles
-chatcli profile add openai --base-url ... --api-key ... --model gpt-4o
-chatcli profile add claude --base-url ... --api-key ... --model claude-3-5-sonnet
-chatcli profile add local --base-url http://localhost:11434/v1 --api-key ollama --model llama3
+oaichat profile add openai --base-url ... --api-key ... --model gpt-4o
+oaichat profile add claude --base-url ... --api-key ... --model claude-3-5-sonnet
+oaichat profile add local --base-url http://localhost:11434/v1 --api-key ollama --model llama3
 
 # Use them
-chatcli chat --profile openai
-chatcli chat --profile claude
-chatcli chat --profile local
+oaichat chat --profile openai
+oaichat chat --profile claude
+oaichat chat --profile local
 ```
 
 ### Advanced Features
 
 **Custom system prompts per profile**:
 ```bash
-chatcli profile add coding \
+oaichat profile add coding \
   --base-url https://api.openai.com/v1 \
   --api-key sk-... \
   --model gpt-4o \
@@ -200,13 +200,13 @@ chatcli profile add coding \
 
 **Temperature and token limits**:
 ```bash
-chatcli chat --temperature 0.9 --max-tokens 2000
+oaichat chat --temperature 0.9 --max-tokens 2000
 ```
 
 **Export conversations for documentation**:
 ```bash
 # Export as markdown for sharing
-chatcli convo export <id> --format md --output conversation.md
+oaichat convo export <id> --format md --output conversation.md
 ```
 
 ## Troubleshooting
@@ -214,41 +214,41 @@ chatcli convo export <id> --format md --output conversation.md
 ### Can't connect to API
 ```bash
 # Test with model list
-chatcli model list
+oaichat model list
 
 # Check profile configuration
-chatcli profile show <name>
+oaichat profile show <name>
 ```
 
 ### No profiles configured
 ```bash
 # The first added profile becomes the default
-chatcli profile add myprofile --base-url ... --api-key ... --model ...
+oaichat profile add myprofile --base-url ... --api-key ... --model ...
 ```
 
 ### Conversation not found
 ```bash
 # Use full ID or first 8 characters
-chatcli convo list  # Shows short IDs
-chatcli convo show <short-id>
+oaichat convo list  # Shows short IDs
+oaichat convo show <short-id>
 ```
 
 ## Examples
 
 ### Code Review Assistant
 ```bash
-chatcli profile add codereview \
+oaichat profile add codereview \
   --base-url https://api.openai.com/v1 \
   --api-key sk-... \
   --model gpt-4o \
   --system "You are a code reviewer. Provide constructive feedback on code quality, security, and best practices."
 
-chatcli chat --profile codereview
+oaichat chat --profile codereview
 ```
 
 ### Creative Writing
 ```bash
-chatcli chat \
+oaichat chat \
   --profile openai \
   --system "You are a creative writing assistant" \
   --temperature 1.5
@@ -257,13 +257,13 @@ chatcli chat \
 ### Quick Questions
 ```bash
 # One-shot for quick answers
-chatcli send "What is the time complexity of quicksort?" --no-stream
+oaichat send "What is the time complexity of quicksort?" --no-stream
 ```
 
 ### Local Development
 ```bash
 # Use Ollama for free local LLMs
 ollama pull llama3
-chatcli profile add local --base-url http://localhost:11434/v1 --api-key ollama --model llama3
-chatcli chat --profile local
+oaichat profile add local --base-url http://localhost:11434/v1 --api-key ollama --model llama3
+oaichat chat --profile local
 ```

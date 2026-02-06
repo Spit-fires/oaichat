@@ -4,9 +4,9 @@ from typing import Optional
 import typer
 from rich.console import Console
 from rich.table import Table
-from chatcli.core.client import get_client, list_models
-from chatcli.config import update_profile_model, get_profile
-from chatcli.core.streaming import display_success, display_error, display_info
+from oaichat.core.client import get_client, list_models
+from oaichat.config import update_profile_model, get_profile
+from oaichat.core.streaming import display_success, display_error, display_info
 
 
 app = typer.Typer(help="Manage models")

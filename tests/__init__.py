@@ -1,1 +1,1 @@
-"""Test suite for chatcli."""
+"""Test suite for oaichat."""

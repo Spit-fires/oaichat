@@ -1,13 +1,13 @@
 """Main CLI entry point."""
 
 import typer
-from chatcli import __version__
-from chatcli.commands import profile, model, chat, conversation
+from oaichat import __version__
+from oaichat.commands import profile, model, chat, conversation
 
 
 # Create main app
 app = typer.Typer(
-    name="chatcli",
+    name="oaichat",
     help="A beautiful CLI for OpenAI-compatible chat APIs",
     no_args_is_help=True,
     rich_markup_mode="rich",
@@ -27,7 +27,7 @@ app.command(name="send")(chat.send_cmd)
 def version_callback(value: bool):
     """Show version and exit."""
     if value:
-        typer.echo(f"chatcli {__version__}")
+        typer.echo(f"oaichat {__version__}")
         raise typer.Exit()
 
 
@@ -43,11 +43,11 @@ def main(
     )
 ):
     """
-    chatcli - A beautiful CLI for OpenAI-compatible chat APIs
+    oaichat - A beautiful CLI for OpenAI-compatible chat APIs
     
-    Start chatting with: [bold green]chatcli chat[/bold green]
+    Start chatting with: [bold green]oaichat chat[/bold green]
     
-    Configure a profile first: [bold cyan]chatcli profile add <name>[/bold cyan]
+    Configure a profile first: [bold cyan]oaichat profile add <name>[/bold cyan]
     """
     pass
 
