@@ -17,6 +17,8 @@ def get_connection() -> sqlite3.Connection:
     conn.execute("PRAGMA journal_mode = WAL")
     
     # Check if tables exist by querying sqlite_master
+    # We only check for 'conversations' table since _create_tables() is idempotent
+    # and creates all tables together using CREATE TABLE IF NOT EXISTS
     cursor = conn.execute(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='conversations'"
     )
