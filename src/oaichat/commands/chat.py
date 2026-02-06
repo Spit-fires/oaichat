@@ -5,12 +5,12 @@ import typer
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
-from clichat.core.client import get_client, generate_title
-from clichat.core.streaming import (
+from oaichat.core.client import get_client, generate_title
+from oaichat.core.streaming import (
     stream_response, get_response, display_token_usage,
     display_error, display_success, display_info, display_warning
 )
-from clichat.storage.database import (
+from oaichat.storage.database import (
     create_conversation, add_message, update_title, get_conversation,
     delete_messages, update_conversation_model, update_conversation_system_prompt
 )
@@ -44,7 +44,7 @@ def chat_cmd(
         active_model = model or profile_obj.default_model
         if not active_model:
             display_error("No model specified. Set a default model or use --model")
-            display_info("List available models with: clichat model list")
+            display_info("List available models with: oaichat model list")
             raise typer.Exit(1)
         
         # Determine system prompt
@@ -75,7 +75,7 @@ def chat_cmd(
         
         # Display welcome banner
         console.print(Panel.fit(
-            f"[bold cyan]clichat Interactive Chat[/bold cyan]\n\n"
+            f"[bold cyan]oaichat Interactive Chat[/bold cyan]\n\n"
             f"Profile: [green]{profile_obj.name}[/green]\n"
             f"Model: [green]{active_model}[/green]\n"
             f"Mode: [yellow]{'no-stream' if no_stream else 'streaming'}[/yellow]\n\n"

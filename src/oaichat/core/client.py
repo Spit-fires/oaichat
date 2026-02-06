@@ -2,8 +2,8 @@
 
 from typing import Optional
 from openai import OpenAI
-from clichat.config import get_profile, get_env_overrides
-from clichat.core.models import Profile
+from oaichat.config import get_profile, get_env_overrides
+from oaichat.core.models import Profile
 
 
 def get_client(profile_name: Optional[str] = None, 
@@ -31,7 +31,7 @@ def get_client(profile_name: Optional[str] = None,
         else:
             raise ValueError(
                 "No default profile configured. "
-                "Create one with: clichat profile add <name>"
+                "Create one with: oaichat profile add <name>"
             )
     
     # Apply environment variable overrides
