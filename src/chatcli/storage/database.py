@@ -8,20 +8,23 @@ from chatcli.config import get_db_path
 from chatcli.core.models import Conversation, Message
 
 
-_tables_created = False
-
-
 def get_connection() -> sqlite3.Connection:
     """Get a database connection with proper settings."""
-    global _tables_created
     db_path = get_db_path()
     conn = sqlite3.connect(str(db_path))
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute("PRAGMA journal_mode = WAL")
-    if not _tables_created:
+    
+    # Check if tables exist by querying sqlite_master
+    # We only check for 'conversations' table since _create_tables() is idempotent
+    # and creates all tables together using CREATE TABLE IF NOT EXISTS
+    cursor = conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='conversations'"
+    )
+    if not cursor.fetchone():
         _create_tables(conn)
-        _tables_created = True
+    
     return conn
 
 
