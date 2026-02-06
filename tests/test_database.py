@@ -1,7 +1,7 @@
 """Tests for database operations."""
 
 import pytest
-from chatcli.storage.database import (
+from clichat.storage.database import (
     create_conversation, add_message, get_conversation,
     list_conversations, delete_conversation, find_conversation_by_prefix
 )
@@ -9,7 +9,7 @@ from chatcli.storage.database import (
 
 def test_create_conversation(temp_app_dir, monkeypatch):
     """Test creating a conversation."""
-    from chatcli import config
+    from clichat import config
     monkeypatch.setattr(config, "get_app_dir", lambda: temp_app_dir)
     
     conv = create_conversation(
@@ -26,7 +26,7 @@ def test_create_conversation(temp_app_dir, monkeypatch):
 
 def test_add_and_retrieve_messages(temp_app_dir, monkeypatch):
     """Test adding and retrieving messages."""
-    from chatcli import config
+    from clichat import config
     monkeypatch.setattr(config, "get_app_dir", lambda: temp_app_dir)
     
     conv = create_conversation(profile="test", model="gpt-4")
@@ -43,7 +43,7 @@ def test_add_and_retrieve_messages(temp_app_dir, monkeypatch):
 
 def test_find_conversation_by_prefix(temp_app_dir, monkeypatch):
     """Test finding conversation by partial ID."""
-    from chatcli import config
+    from clichat import config
     monkeypatch.setattr(config, "get_app_dir", lambda: temp_app_dir)
     
     conv = create_conversation(profile="test", model="gpt-4")
@@ -56,8 +56,8 @@ def test_find_conversation_by_prefix(temp_app_dir, monkeypatch):
 
 def test_list_conversations_with_search(temp_app_dir, monkeypatch):
     """Test searching conversations."""
-    from chatcli import config
-    from chatcli.storage.database import update_title
+    from clichat import config
+    from clichat.storage.database import update_title
     monkeypatch.setattr(config, "get_app_dir", lambda: temp_app_dir)
     
     # Create conversations with different titles

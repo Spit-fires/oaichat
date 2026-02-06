@@ -2,7 +2,7 @@
 
 import json
 from pathlib import Path
-from chatcli.core.models import Conversation
+from clichat.core.models import Conversation
 
 
 def export_to_json(conversation: Conversation, output_path: Path) -> None:

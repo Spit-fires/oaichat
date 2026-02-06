@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "chatcli"
+name = "clichat"
 version = "0.1.0"
 description = "A beautiful CLI for testing OpenAI-compatible chat APIs"
 readme = "README.md"
@@ -34,7 +34,7 @@ dependencies = [
 ]
 
 [project.scripts]
-chatcli = "chatcli.cli:app"
+clichat = "clichat.cli:app"
 
 [project.optional-dependencies]
 test = [
@@ -43,5 +43,5 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/spit-fires/chatcli"
-Repository = "https://github.com/spit-fires/chatcli"
+Homepage = "https://github.com/spit-fires/clichat"
+Repository = "https://github.com/spit-fires/clichat"

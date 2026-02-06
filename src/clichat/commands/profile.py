@@ -5,12 +5,12 @@ import typer
 from rich.console import Console
 from rich.table import Table
 from rich.prompt import Prompt, Confirm
-from chatcli.config import (
+from clichat.config import (
     add_profile, list_profiles, remove_profile, 
     set_default_profile, get_default_profile_name, get_profile
 )
-from chatcli.core.models import Profile
-from chatcli.core.streaming import display_success, display_error, display_info
+from clichat.core.models import Profile
+from clichat.core.streaming import display_success, display_error, display_info
 
 
 app = typer.Typer(help="Manage API provider profiles")
@@ -58,7 +58,7 @@ def add_profile_cmd(
         api_key = Prompt.ask("API Key", password=True)
     
     if not model:
-        console.print("\n[dim]You can set this later with 'chatcli model set' after listing available models[/dim]")
+        console.print("\n[dim]You can set this later with 'clichat model set' after listing available models[/dim]")
         model = Prompt.ask("Default model (optional, press Enter to skip)", default="")
         model = model.strip() if model else None
     else:
@@ -94,7 +94,7 @@ def list_profiles_cmd():
     profiles = list_profiles()
     
     if not profiles:
-        display_info("No profiles configured. Add one with: chatcli profile add <name>")
+        display_info("No profiles configured. Add one with: clichat profile add <name>")
         return
     
     default = get_default_profile_name()

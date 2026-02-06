@@ -1,4 +1,4 @@
-"""Configuration management for chatcli."""
+"""Configuration management for clichat."""
 
 import os
 import sys
@@ -13,12 +13,12 @@ else:
     import tomli as tomllib
 
 import typer
-from chatcli.core.models import Profile
+from clichat.core.models import Profile
 
 
 def get_app_dir() -> Path:
     """Get the application data directory."""
-    app_dir = Path(typer.get_app_dir("chatcli"))
+    app_dir = Path(typer.get_app_dir("clichat"))
     app_dir.mkdir(parents=True, exist_ok=True)
     return app_dir
 
@@ -30,7 +30,7 @@ def get_config_path() -> Path:
 
 def get_db_path() -> Path:
     """Get the database file path."""
-    return get_app_dir() / "chatcli.db"
+    return get_app_dir() / "clichat.db"
 
 
 def load_config() -> dict:
@@ -158,13 +158,13 @@ def get_env_overrides() -> dict:
     """Get environment variable overrides."""
     overrides = {}
     
-    if api_key := os.getenv("CHATCLI_API_KEY"):
+    if api_key := os.getenv("CLICHAT_API_KEY"):
         overrides["api_key"] = api_key
     
-    if base_url := os.getenv("CHATCLI_BASE_URL"):
+    if base_url := os.getenv("CLICHAT_BASE_URL"):
         overrides["base_url"] = base_url
     
-    if model := os.getenv("CHATCLI_MODEL"):
+    if model := os.getenv("CLICHAT_MODEL"):
         overrides["model"] = model
     
     return overrides

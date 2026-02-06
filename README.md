@@ -1,4 +1,4 @@
-# chatcli
+# clichat
 
 A beautiful CLI for testing and interacting with OpenAI-compatible chat APIs.
 
@@ -17,14 +17,14 @@ A beautiful CLI for testing and interacting with OpenAI-compatible chat APIs.
 ## Installation
 
 ```bash
-pip install chatcli
+pip install clichat
 ```
 
 Or install from source:
 
 ```bash
-git clone https://github.com/yourusername/chatcli.git
-cd chatcli
+git clone https://github.com/yourusername/clichat.git
+cd clichat
 pip install -e .
 ```
 
@@ -34,39 +34,39 @@ pip install -e .
 
 ```bash
 # OpenAI
-chatcli profile add openai --base-url https://api.openai.com/v1 --api-key sk-... --model gpt-4o
+clichat profile add openai --base-url https://api.openai.com/v1 --api-key sk-... --model gpt-4o
 
 # Ollama (local)
-chatcli profile add ollama --base-url http://localhost:11434/v1 --api-key ollama --model llama3
+clichat profile add ollama --base-url http://localhost:11434/v1 --api-key ollama --model llama3
 
 # Groq
-chatcli profile add groq --base-url https://api.groq.com/openai/v1 --api-key gsk-... --model llama-3.1-70b-versatile
+clichat profile add groq --base-url https://api.groq.com/openai/v1 --api-key gsk-... --model llama-3.1-70b-versatile
 ```
 
 ### 2. Chat!
 
 ```bash
 # Start an interactive chat session
-chatcli chat
+clichat chat
 
 # Send a one-off message
-chatcli send "Explain quantum computing in simple terms"
+clichat send "Explain quantum computing in simple terms"
 
 # Use a specific profile and model
-chatcli chat --profile ollama --model llama3
+clichat chat --profile ollama --model llama3
 ```
 
 ### 3. Manage conversations
 
 ```bash
 # List all conversations
-chatcli convo list
+clichat convo list
 
 # Resume a previous conversation
-chatcli convo resume <conversation-id>
+clichat convo resume <conversation-id>
 
 # Export to markdown
-chatcli convo export <conversation-id> --format md
+clichat convo export <conversation-id> --format md
 ```
 
 ## Commands
@@ -74,34 +74,34 @@ chatcli convo export <conversation-id> --format md
 ### Profile Management
 
 ```bash
-chatcli profile add <name>           # Add a new API profile
-chatcli profile list                 # List all profiles
-chatcli profile show <name>          # Show profile details
-chatcli profile set-default <name>   # Set default profile
-chatcli profile remove <name>        # Remove a profile
+clichat profile add <name>           # Add a new API profile
+clichat profile list                 # List all profiles
+clichat profile show <name>          # Show profile details
+clichat profile set-default <name>   # Set default profile
+clichat profile remove <name>        # Remove a profile
 ```
 
 ### Model Management
 
 ```bash
-chatcli model list                   # List available models from current profile
-chatcli model list --profile <name>  # List models from specific profile
-chatcli model set <model-name>       # Set default model for current profile
+clichat model list                   # List available models from current profile
+clichat model list --profile <name>  # List models from specific profile
+clichat model set <model-name>       # Set default model for current profile
 ```
 
 ### Chatting
 
 ```bash
-chatcli chat                         # Start interactive chat
-chatcli chat --profile <name>        # Use specific profile
-chatcli chat --model <name>          # Use specific model
-chatcli chat --system "You are..."   # Set system prompt
-chatcli chat --temperature 0.7       # Set temperature
-chatcli chat --max-tokens 2000       # Set max tokens
-chatcli chat --no-stream             # Wait for complete response
+clichat chat                         # Start interactive chat
+clichat chat --profile <name>        # Use specific profile
+clichat chat --model <name>          # Use specific model
+clichat chat --system "You are..."   # Set system prompt
+clichat chat --temperature 0.7       # Set temperature
+clichat chat --max-tokens 2000       # Set max tokens
+clichat chat --no-stream             # Wait for complete response
 
-chatcli send "message"               # Send one-off message
-chatcli send "message" --save        # Save one-off message to history
+clichat send "message"               # Send one-off message
+clichat send "message" --save        # Save one-off message to history
 ```
 
 ### Interactive Chat Commands
@@ -118,36 +118,36 @@ While in an interactive chat session:
 ### Conversation Management
 
 ```bash
-chatcli convo list                   # List all conversations
-chatcli convo list --profile <name>  # Filter by profile
-chatcli convo list --limit 50        # Show more conversations
-chatcli convo show <id>              # Display full conversation
-chatcli convo resume <id>            # Resume interactive chat
-chatcli convo delete <id>            # Delete conversation
-chatcli convo export <id> --format json  # Export to JSON
-chatcli convo export <id> --format md    # Export to Markdown
+clichat convo list                   # List all conversations
+clichat convo list --profile <name>  # Filter by profile
+clichat convo list --limit 50        # Show more conversations
+clichat convo show <id>              # Display full conversation
+clichat convo resume <id>            # Resume interactive chat
+clichat convo delete <id>            # Delete conversation
+clichat convo export <id> --format json  # Export to JSON
+clichat convo export <id> --format md    # Export to Markdown
 ```
 
 ## Configuration
 
 Profiles and settings are stored in your platform's app directory:
-- **Linux**: `~/.config/chatcli/`
-- **macOS**: `~/Library/Application Support/chatcli/`
-- **Windows**: `%APPDATA%\chatcli\`
+- **Linux**: `~/.config/clichat/`
+- **macOS**: `~/Library/Application Support/clichat/`
+- **Windows**: `%APPDATA%\clichat\`
 
 ### Environment Variables
 
 Override profile settings with environment variables:
 
 ```bash
-export CHATCLI_API_KEY=sk-...
-export CHATCLI_BASE_URL=https://api.openai.com/v1
-export CHATCLI_MODEL=gpt-4o
+export CLICHAT_API_KEY=sk-...
+export CLICHAT_BASE_URL=https://api.openai.com/v1
+export CLICHAT_MODEL=gpt-4o
 ```
 
 ## Supported Providers
 
-chatcli works with any OpenAI-compatible API:
+clichat works with any OpenAI-compatible API:
 
 | Provider | Base URL | Notes |
 |----------|----------|-------|

@@ -8,12 +8,12 @@ from rich.table import Table
 from rich.panel import Panel
 from rich.markdown import Markdown
 from rich.prompt import Confirm
-from chatcli.storage.database import (
+from clichat.storage.database import (
     list_conversations, get_conversation, delete_conversation, get_message_count,
     find_conversation_by_prefix
 )
-from chatcli.storage.export import export_to_json, export_to_markdown, get_export_filename
-from chatcli.core.streaming import display_success, display_error, display_info
+from clichat.storage.export import export_to_json, export_to_markdown, get_export_filename
+from clichat.core.streaming import display_success, display_error, display_info
 
 
 app = typer.Typer(name="convo", help="Manage conversations")
@@ -147,7 +147,7 @@ def resume_conversation_cmd(
 ):
     """Resume an interactive chat session."""
     # Import here to avoid circular dependency
-    from chatcli.commands.chat import chat_cmd
+    from clichat.commands.chat import chat_cmd
     
     # Try to find conversation
     conversation = _find_conversation(conversation_id)
@@ -239,7 +239,7 @@ def rename_conversation_cmd(
     title: str = typer.Argument(..., help="New title for the conversation"),
 ):
     """Rename a conversation."""
-    from chatcli.storage.database import update_title
+    from clichat.storage.database import update_title
     
     conversation = _find_conversation(conversation_id)
     

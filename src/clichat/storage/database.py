@@ -4,8 +4,8 @@ import sqlite3
 import uuid
 from datetime import datetime
 from typing import Optional
-from chatcli.config import get_db_path
-from chatcli.core.models import Conversation, Message
+from clichat.config import get_db_path
+from clichat.core.models import Conversation, Message
 
 
 def get_connection() -> sqlite3.Connection:
